@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Super Fit to Fat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="gc">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Tela inicial -->
+    <div id="ss" class="ov">
+      <div class="title">SUPER<br>FIT TO FAT</div>
+      <div class="sub">🍺 BEBA &amp; COMA TUDO!</div>
+      <div id="ls">CARREGANDO...</div>
+      <button id="pb" class="btn" onclick="initGame()">▶ JOGAR</button>
+    </div>
+
+    <!-- HUD (pontuação + barra de gordura) -->
+    <div id="hud" class="hidden">
+      <div class="hp">
+        <div class="hs">🍔 <span id="sd">0</span></div>
+        <div class="fb"><div id="ff"></div></div>
+        <div class="fl">gordura <span id="fp">0</span>%</div>
+      </div>
+    </div>
+
+    <!-- Controles mobile -->
+    <div id="ctrl" class="hidden">
+      <div class="lb">
+        <div class="bc" id="bL">⬅️</div>
+        <div class="bc" id="bR">➡️</div>
+      </div>
+      <div class="bc" id="bJ">⬆️</div>
+    </div>
+
+    <!-- Combo popup -->
+    <div id="cp"></div>
+
+    <!-- Tela de game over -->
+    <div id="gos" class="ov hidden">
+      <div class="got">FIM DA DIETA!</div>
+      <div class="gos2">Ficou gordo demais 😂</div>
+      <div class="gsc" id="fs">0</div>
+      <button class="btn" style="display:block" onclick="location.reload()">🔄 JOGAR DE NOVO</button>
+    </div>
+  </div>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
