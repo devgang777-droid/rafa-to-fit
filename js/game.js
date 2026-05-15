@@ -2,8 +2,9 @@
 const canvas=document.getElementById('gameCanvas');
 const ctx=canvas.getContext('2d');
 let W,H;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+function resize(){const vp=window.visualViewport;W=canvas.width=vp?Math.round(vp.width):window.innerWidth;H=canvas.height=vp?Math.round(vp.height):window.innerHeight;}
 window.addEventListener('resize',()=>{resize();if(isPlaying)createWorld();});
+if(window.visualViewport)window.visualViewport.addEventListener('resize',()=>{resize();if(isPlaying)createWorld();});
 resize();
 
 const faceImg=new Image();
@@ -138,7 +139,7 @@ function setupInput(){
     const el=document.getElementById(id);
     const on=e=>{e.preventDefault();inputs[key]=true;el.classList.add('pr');};
     const off=e=>{e.preventDefault();inputs[key]=false;el.classList.remove('pr');};
-    el.addEventListener('touchstart',on,{passive:false});el.addEventListener('touchend',off,{passive:false});
+    el.addEventListener('touchstart',on,{passive:false});el.addEventListener('touchend',off,{passive:false});el.addEventListener('touchcancel',off,{passive:false});
     el.addEventListener('mousedown',on);el.addEventListener('mouseup',off);el.addEventListener('mouseleave',off);
   };
   bind('bL','left');bind('bR','right');bind('bJ','jump');
